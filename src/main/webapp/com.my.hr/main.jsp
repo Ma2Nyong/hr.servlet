@@ -1,11 +1,8 @@
 <%@ page language='java' contentType='text/html; charset=utf-8' pageEncoding='utf-8'%>
-<%@ page import='com.my.hr.dao.LaborerDao,com.my.hr.dao.LaborerDaoImpl,
-				com.my.hr.service.LaborerService, com.my.hr.service.LaborerServiceImpl,
-				com.my.hr.presentation.Console, com.my.hr.presentation.LaborerIo'%>
-<%
-	LaborerDao laborerDao = new LaborerDaoImpl();
-	LaborerService laborerService = new LaborerServiceImpl(laborerDao);
-	LaborerIo laborerIo = new LaborerIo(laborerService);
-%>
-
-<%= laborerIo.play() %>
+<h3>메인</h3>
+<nav>
+	<a href='laborerOut.jsp'>조회</a>
+	<a href='laborerAddProc.jsp'>추가</a>
+	<a href='laborerFixProc.jsp'>수정</a>
+	<a href='laborerDelProc.jsp'>삭제</a>
+</nav>
