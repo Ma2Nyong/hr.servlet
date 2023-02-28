@@ -1,14 +1,26 @@
 <%@ page language='java' contentType='text/html; charset=utf-8' pageEncoding='utf-8'%>
-<%@ page import='java.util.List, java.util.ArrayList' %>
+<%@ page import='java.util.List, java.util.ArrayList, java.time.LocalDate' %>
+<%@ page import='com.my.hr.dao.LaborerDao, com.my.hr.dao.LaborerDaoImpl'%>
+<%@ page import='com.my.hr.service.LaborerService, com.my.hr.service.LaborerServiceImpl, com.my.hr.domain.Laborer'%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
-<a href='main.jsp'>메인</a>
-<h3>추가</h3>
-<form action='laborerOut.jsp' method='post'>
-	이름: <input type='text' name='addLaborerName'/>
-	입사일: <input type='date' name='addHireDate'/>
-	<button type='submit'>추가</button>
-</form>
 <%
-	String msg = request.getParameter("msg");
-	if(msg != null) out.println(msg);
+	LaborerDao laborerDao = new LaborerDaoImpl();
+	LaborerService laborerService = new LaborerServiceImpl(laborerDao);
+
+	String laborerName = request.getParameter("laborerName");
+	String hireDate = request.getParameter("hireDate");
+	
+	if(laborerName != "" || hireDate != "") {
+		LocalDate date = null;
+		
+		date = LocalDate.parse(hireDate); 
+		laborerService.addLaborer(laborerName, date);
+	} else { 
 %>
+		<c:redirect url='laborerAdd.jsp'>
+			<c:param name='msg' value='노동자명과 입사일을 입력하세요.'/>
+		</c:redirect>
+<%
+	}
+%>
+<c:redirect url='laborerAdd.jsp'/>

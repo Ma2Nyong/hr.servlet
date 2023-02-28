@@ -4,14 +4,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.my.hr.dao.LaborerDao;
+import com.my.hr.dao.LaborerDaoImpl;
 import com.my.hr.domain.Laborer;
 import com.my.hr.domain.NoneException;
 
 public class LaborerServiceImpl implements LaborerService {
 	private LaborerDao laborerDao;
 	
-	public LaborerServiceImpl(LaborerDao laborerDao) {
-		this.laborerDao = laborerDao;
+	public LaborerServiceImpl() {
+		this.laborerDao = new LaborerDaoImpl();
 	}
 	
 	@Override
