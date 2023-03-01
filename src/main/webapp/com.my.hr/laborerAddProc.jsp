@@ -5,22 +5,14 @@
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%
 	LaborerDao laborerDao = new LaborerDaoImpl();
-	LaborerService laborerService = new LaborerServiceImpl(laborerDao);
+	LaborerService laborerService = new LaborerServiceImpl();
 
 	String laborerName = request.getParameter("laborerName");
 	String hireDate = request.getParameter("hireDate");
 	
-	if(laborerName != "" || hireDate != "") {
 		LocalDate date = null;
 		
 		date = LocalDate.parse(hireDate); 
 		laborerService.addLaborer(laborerName, date);
-	} else { 
 %>
-		<c:redirect url='laborerAdd.jsp'>
-			<c:param name='msg' value='노동자명과 입사일을 입력하세요.'/>
-		</c:redirect>
-<%
-	}
-%>
-<c:redirect url='laborerAdd.jsp'/>
+<c:redirect url='main.jsp'/>
