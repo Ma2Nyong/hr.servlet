@@ -15,6 +15,8 @@ public class Laborer {
 	
 	@Override
 	public String toString() {
-		return String.format("%2d %-5s %s", laborerId, laborerName, hireDate);
+		return String.format("{\"laborerId\": %d," +
+				"\"laborerName\": \"%s\"," +
+				"\"hireDate\": \"%s\"}", laborerId, laborerName, hireDate);
 	}
 }

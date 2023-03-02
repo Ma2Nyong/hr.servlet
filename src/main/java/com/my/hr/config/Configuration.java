@@ -11,13 +11,14 @@ public class Configuration {
 	
 	static {
 		try {
-			Reader reader = Resources.getResourceAsReader("com/my/hr//config/sqlMapConfig.xml");
+			Reader reader = Resources.getResourceAsReader("com/my/hr/config/sqlMapConfig.xml");
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public static <T> T getMapper(Class<T> arg) {
+	
+	public static <T> T getMapper(Class <T> arg) {
 		return sqlSessionFactory.openSession(true).getMapper(arg);
 	}
 }

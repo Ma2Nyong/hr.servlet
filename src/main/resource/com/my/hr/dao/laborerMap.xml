@@ -16,7 +16,7 @@
 	
 	<insert id='insertLaborer'>
 		insert into laborers (laborer_id, laborer_name, hire_date)
-		values(laborer_id_seq.nextval, #{laborerName}, #{hireDate})
+		values(hr2.laborers_labid_seq.nextval, #{laborerName}, #{hireDate})
 	</insert>
 	
 	<update id='updateLaborer'>
